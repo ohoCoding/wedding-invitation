@@ -1,6 +1,6 @@
-import { CardContent } from "@/components/ui/card";
-import mainImage from "@/assets/images/image.png";
-import { loveMessages } from "@/constants/lovemessage";
+import { CardContent } from '@/components/ui/card';
+import mainImage from '@/assets/images/image.png';
+import { loveMessages } from '@/constants/lovemessage';
 
 const TopInfo = () => {
   return (
@@ -11,7 +11,7 @@ const TopInfo = () => {
       </h3>
 
       {/* 신랑 & 신부 이름 */}
-      <h1 className="mt-2 text-2xl text-gray-900 font-batang">
+      <h1 className="mt-2 text-2xl text-gray-900">
         이동윤 <span className="text-gray-500">그리고</span> 이하나
       </h1>
 
@@ -25,9 +25,9 @@ const TopInfo = () => {
       </div>
 
       {/* 러브 메시지 */}
-      <div className="flex text-center items-center justify-center leading-[2.2rem] text-[1rem] font-batang tracking-normal whitespace-pre">
+      <div className="flex text-center items-center justify-center leading-[2.2rem] text-[1rem] tracking-normal whitespace-pre">
         {loveMessages.map((message, index) => (
-          <p key={index} className="mt-4 text-lg text-gray-600 font-batang">
+          <p key={index} className="mt-4 text-lg text-gray-600">
             {message.value}
           </p>
         ))}
