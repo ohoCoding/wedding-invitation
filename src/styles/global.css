@@ -1,0 +1,20 @@
+@import url("https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* 추가 글로벌 스타일 */
+body {
+  @apply bg-gray-50 text-gray-800;
+}
+
+a {
+  @apply text-blue-600 hover:underline;
+}
+
+/* IropkeBatangM 폰트 설정 */
+@layer base {
+  body {
+    font-family: "IropkeBatangM", serif;
+  }
+}
