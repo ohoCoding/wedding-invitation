@@ -6,6 +6,7 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
+    "types": ["node", "jest"], // Jest와 Node.js 타입을 포함
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]
