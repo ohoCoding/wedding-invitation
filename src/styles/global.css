@@ -1,6 +1,7 @@
 @import url("https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css");
 @import url("https://cdn.jsdelivr.net/font-iropke-batang/1.2/font-iropke-batang.css");
 @import url("https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Parisienne&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -10,6 +11,7 @@
 :root {
   --font-default: "Iropke Batang", serif;
   --font-wedding: "Crimson Pro", var(--font-default), serif;
+  --font-parisienne: "Parisienne", var(--font-default), serif;
   --margin-bg-color: #333; /* 배경색 변수 추가 */
 }
 
