@@ -1,21 +1,25 @@
-@import url('https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css');
-@import url('https://cdn.jsdelivr.net/font-iropke-batang/1.2/font-iropke-batang.css');
+@import url("https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css");
+@import url("https://cdn.jsdelivr.net/font-iropke-batang/1.2/font-iropke-batang.css");
+@import url("https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* 추가 글로벌 스타일 */
-body {
-  @apply bg-gray-50 text-gray-800;
+
+/* 전역 CSS 변수로 폰트 & 배경색 설정 */
+:root {
+  --font-default: "Iropke Batang", serif;
+  --font-wedding: "Crimson Pro", var(--font-default), serif;
+  --margin-bg-color: #333; /* 배경색 변수 추가 */
 }
 
-a {
-  @apply text-blue-600 hover:underline;
-}
-
-/* IropkeBatangM 폰트 설정 */
+/* Tailwind 기본 스타일 설정 */
 @layer base {
   body {
-    font-family: 'Iropke Batang', serif;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: var(--margin-bg-color);
+    font-family: var(--font-default);
   }
 }
