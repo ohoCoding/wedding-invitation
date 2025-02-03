@@ -20,7 +20,7 @@ const CalendarContent = () => {
   return (
     <div className="w-full h-full leading-9">
       <div className="font-medium text-2xl tracking-wide">2025.04.05</div>
-      <div className="mb-5">토요일 오후 3시</div>
+      <div className="mb-5 tracking-wider">토요일 오후 3시</div>
 
       <div className="text-center px-10 pb-10">
         <Table className="">

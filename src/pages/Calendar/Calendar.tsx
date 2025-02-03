@@ -4,10 +4,12 @@ import CountDown from '@/pages/Calendar/components/CountDown';
 
 const Calendar = () => {
   return (
-    <CardContent className="p-0 py-10 text-center bg-gray-50">
-      <CalendarContent />
+    <CardContent className="p-0 py-10 text-center ">
+      <div className="bg-gray-50 py-11">
+        <CalendarContent />
 
-      <CountDown />
+        <CountDown />
+      </div>
     </CardContent>
   );
 };
