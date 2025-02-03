@@ -11,7 +11,7 @@ const Contacting = () => {
             <span>의</span>
             <span className="ml-1">아들</span>
           </span>
-          <span className="text-lg">도현</span>
+          <span className="text-lg">동윤</span>
         </div>
         <div>
           <span className="text-lg">서동명ㆍ권숙이</span>
