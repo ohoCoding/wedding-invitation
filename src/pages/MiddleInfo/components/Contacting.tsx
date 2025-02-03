@@ -1,4 +1,4 @@
-import { Button } from '@/components/ui/button';
+import ContactDialog from '@/pages/MiddleInfo/components/ContactDialog';
 
 const Contacting = () => {
   return (
@@ -24,11 +24,7 @@ const Contacting = () => {
       </div>
 
       {/* 연락하기 버튼 */}
-      <div>
-        <Button variant="outline" size="custom">
-          연락하기
-        </Button>
-      </div>
+      <ContactDialog />
     </>
   );
 };
