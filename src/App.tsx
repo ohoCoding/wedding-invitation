@@ -1,5 +1,6 @@
 import { Card } from '@/components/ui/card';
 import Calendar from '@/pages/Calendar/Calendar';
+import HowToCome from '@/pages/HowToCome/HowToCome';
 import MiddleInfo from '@/pages/MiddleInfo/MiddleInfo';
 import TopInfo from '@/pages/TopInfo';
 
@@ -11,6 +12,7 @@ export default function App() {
         <TopInfo />
         <MiddleInfo />
         <Calendar />
+        <HowToCome />
       </Card>
     </div>
   );
