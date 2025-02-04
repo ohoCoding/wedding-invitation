@@ -24,7 +24,9 @@ const Contacting = () => {
       </div>
 
       {/* 연락하기 버튼 */}
-      <ContactDialog />
+      <div className="flex items-center justify-center">
+        <ContactDialog />
+      </div>
     </>
   );
 };

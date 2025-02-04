@@ -1,4 +1,4 @@
-import exampleImage from '@/assets/images/middleExample.jpg';
+import middleInfoImage from '@/assets/images/middleInfoImage.png';
 
 const GreetingMessage = () => {
   return (
@@ -21,7 +21,7 @@ const GreetingMessage = () => {
 
       {/* Content 이미지 */}
       <div className="pt-4">
-        <img src={exampleImage} className="w-full"></img>
+        <img src={middleInfoImage} className="w-full"></img>
       </div>
     </>
   );
