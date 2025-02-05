@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 
 const Map = () => {
   useEffect(() => {
@@ -26,9 +26,9 @@ const Map = () => {
   };
 
   return (
-    <React.Fragment>
+    <div className="mb-4">
       <div id="map" style={mapStyle}></div>
-    </React.Fragment>
+    </div>
   );
 };
 
