@@ -10,3 +10,9 @@ export interface ContactInfoType {
   sms: string;
   isBride?: boolean;
 }
+
+export interface OpenWithMap {
+  openWithNaverMap: () => void;
+  openWithKakaoMap: () => void;
+  openWithTMap: () => void;
+}
