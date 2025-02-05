@@ -22,8 +22,8 @@ const CalendarContent = () => {
       <div className="font-medium text-2xl tracking-wide">2025.04.05</div>
       <div className="mb-5 tracking-wider">토요일 오후 3시</div>
 
-      <div className="text-center px-10 pb-10">
-        <Table className="">
+      <div className="w-full text-center px-4 pb-10">
+        <Table>
           <TableHeader>
             <TableRow>
               {days.map((day, index) => (
