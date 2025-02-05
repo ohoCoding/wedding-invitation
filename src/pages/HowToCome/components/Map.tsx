@@ -42,8 +42,7 @@ const Map = () => {
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
     if (isMobile) {
-      window.location.href =
-        'tmap://route?goalname=우리은행%20본점&goalx=37.567419&goaly=126.983341';
+      window.location.href = 'https://tmap.life/0626e24c';
     } else {
       alert('모바일에서 확인 가능합니다');
     }
