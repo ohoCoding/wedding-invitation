@@ -30,7 +30,7 @@ const WayToCome = () => {
         <div className="text-[15px] leading-8">
           <p>⦁ 서울 중구 소공로 51(회현동 1번지) 우리은행 본점</p>
           <p className="text-sm " onClick={handleCall}>
-            <span className="active:scale-98 transform transition-transform border-b">
+            <span className="active:scale-98 transform transition-transform">
               📞 02) 2002-3000
             </span>
           </p>

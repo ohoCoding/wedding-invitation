@@ -1,3 +1,4 @@
+import MapButton from '@/pages/HowToCome/components/MapButton';
 import { useEffect } from 'react';
 
 const Map = () => {
@@ -25,9 +26,46 @@ const Map = () => {
     height: '300px',
   };
 
+  const openWithNaverMap = () => {
+    window.location.href =
+      'https://map.naver.com/p/search/%EC%9A%B0%EB%A6%AC%EC%9D%80%ED%96%89%20%EB%B3%B8%EC%A0%90/place/12127345?c=15.00,0,0,0,dh&placePath=%3Fentry%253Dbmp';
+  };
+
+  const openWithKakaoMap = () => {
+    window.location.href = 'https://kko.kakao.com/-kLAUEESlX';
+  };
+
+  const openWithTMap = () => {
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+    if (isMobile) {
+      window.location.href =
+        'tmap://route?goalname=우리은행%20본점&goalx=37.567419&goaly=126.983341';
+    } else {
+      alert('모바일에서 확인 가능합니다');
+    }
+  };
+
   return (
     <div className="mb-4">
       <div id="map" style={mapStyle}></div>
+      <div className='flex px-2 py-1 bg-gray-50'>
+        <MapButton
+          onClick={openWithNaverMap}
+          icon="src/assets/images/naver_map.webp"
+        >
+          네이버 지도
+        </MapButton>
+        <MapButton
+          onClick={openWithKakaoMap}
+          icon="src/assets/images/kakaomap_basic.png"
+        >
+          카카오 맵
+        </MapButton>
+        <MapButton onClick={openWithTMap} icon="src/assets/images/t_map.svg">
+          티맵
+        </MapButton>
+      </div>
     </div>
   );
 };
