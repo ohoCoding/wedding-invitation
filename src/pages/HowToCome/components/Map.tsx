@@ -1,5 +1,8 @@
 import MapButton from '@/pages/HowToCome/components/MapButton';
 import { useEffect } from 'react';
+import naverMapImage from '@/assets/images/naver_map.webp';
+import kakaoMapImage from '@/assets/images/kakaomap_basic.png';
+import tMapImage from '@/assets/images/t_map.svg';
 
 const Map = () => {
   useEffect(() => {
@@ -49,20 +52,14 @@ const Map = () => {
   return (
     <div className="mb-4">
       <div id="map" style={mapStyle}></div>
-      <div className='flex px-2 py-1 bg-gray-50'>
-        <MapButton
-          onClick={openWithNaverMap}
-          icon="src/assets/images/naver_map.webp"
-        >
+      <div className="flex px-2 py-1 bg-gray-50">
+        <MapButton onClick={openWithNaverMap} icon={naverMapImage}>
           네이버 지도
         </MapButton>
-        <MapButton
-          onClick={openWithKakaoMap}
-          icon="src/assets/images/kakaomap_basic.png"
-        >
+        <MapButton onClick={openWithKakaoMap} icon={kakaoMapImage}>
           카카오 맵
         </MapButton>
-        <MapButton onClick={openWithTMap} icon="src/assets/images/t_map.svg">
+        <MapButton onClick={openWithTMap} icon={tMapImage}>
           티맵
         </MapButton>
       </div>
