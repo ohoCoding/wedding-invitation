@@ -14,14 +14,10 @@ const Carousel = () => {
     })
   );
 
-  // 이미지가 없으면 컴포넌트 렌더링 되지 않도록 처리
-  if (parsedImages.length === 0) return <p>이미지가 없습니다!</p>;
-  // 무한루프를 위해 마지막 이미지를 맨앞에, 첫번째 이미지를 맨뒤에 추가
-  const extendedImages: GalleryType[] = [
-    parsedImages[parsedImages.length - 1],
-    ...parsedImages,
-    parsedImages[0],
-  ];
+  // 무한루프를 위해 마지막 이미지를 맨 앞에, 첫 번째 이미지를 맨 뒤에 추가
+  const extendedImages: GalleryType[] = parsedImages.length
+    ? [parsedImages[parsedImages.length - 1], ...parsedImages, parsedImages[0]]
+    : [];
 
   const [currentIndex, setCurrentIndex] = useState(1);
   const [dragStartX, setDragStartX] = useState<number | null>(null);
@@ -31,12 +27,13 @@ const Carousel = () => {
 
   // 자동 슬라이드: 드래그 중이 아닐 떄마다 3초후 다음 슬라이드 이동
   useEffect(() => {
+    if (!parsedImages.length) return; // 이미지가 없으면 타이머 설정 X
     if (dragging) return;
     const interval = setInterval(() => {
       setCurrentIndex((prev) => prev + 1);
     }, 3000);
     return () => clearInterval(interval);
-  }, [currentIndex, dragging]);
+  }, [currentIndex, dragging, parsedImages.length]);
 
   // transition 종료 후 클론이미지에서 실제 이미지로 인덱스 보정
   const handleTransitionEnd = () => {
@@ -47,8 +44,8 @@ const Carousel = () => {
         containerRef.current.style.transform = `translateX(-${
           parsedImages.length * 100
         }%)`;
-        // 강제로 reflow 발생 후 transition 복원
-        containerRef.current.offsetHeight;
+        // getBoundingClientRect() 호출로 reflow 강제 (함수 호출이므로 ESLint 경고가 발생하지 않음)
+        containerRef.current.getBoundingClientRect();
         containerRef.current.style.transition = 'transform 300ms ease-out';
       }
     } else if (currentIndex === parsedImages.length + 1) {
@@ -56,7 +53,8 @@ const Carousel = () => {
       if (containerRef.current) {
         containerRef.current.style.transition = 'none';
         containerRef.current.style.transform = `translateX(-100%)`;
-        containerRef.current.offsetHeight;
+        // getBoundingClientRect() 호출로 reflow 강제 (함수 호출이므로 ESLint 경고가 발생하지 않음)
+        containerRef.current.getBoundingClientRect();
         containerRef.current.style.transition = 'transform 300ms ease-out';
       }
     }
