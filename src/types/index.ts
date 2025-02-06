@@ -16,3 +16,9 @@ export interface OpenWithMap {
   openWithKakaoMap: () => void;
   openWithTMap: () => void;
 }
+
+export interface GalleryType {
+  id: number;
+  src: string;
+  alt: string;
+}
