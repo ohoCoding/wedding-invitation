@@ -3,6 +3,7 @@ import Calendar from '@/pages/Calendar/Calendar';
 import HowToCome from '@/pages/HowToCome/HowToCome';
 import MiddleInfo from '@/pages/MiddleInfo/MiddleInfo';
 import TopInfo from '@/pages/TopInfo';
+import Gallery from '@/pages/Gallery';
 
 export default function App() {
   return (
@@ -12,6 +13,7 @@ export default function App() {
         <TopInfo />
         <MiddleInfo />
         <Calendar />
+        <Gallery />
         <HowToCome />
       </Card>
     </div>
