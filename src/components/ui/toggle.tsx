@@ -5,7 +5,7 @@ import * as React from 'react';
 import * as TogglePrimitive from '@radix-ui/react-toggle';
 import type { VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
-import { toggleVariants } from './toggle-variants';
+import { toggleVariants } from '@/components/type/toggle-variants'; // 경로는 프로젝트 구조에 맞게 조정하세요.
 
 const Toggle = React.forwardRef<
   React.ElementRef<typeof TogglePrimitive.Root>,
