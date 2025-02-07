@@ -11,6 +11,6 @@ export const guideInfo: GuideType[] = [
     value: 'parking',
     label: '주차안내',
     content:
-      '지하 2~3층 결혼식 하객이용\n 자리부족하면 4층부터 사용가능 주차시간은 종일 무료',
+      '지하 2~3층 결혼식 하객이용\n 자리부족하면 4층부터 사용가능\n 주차시간은 종일 무료',
   },
 ];
