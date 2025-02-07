@@ -4,7 +4,7 @@ import HowToCome from '@/pages/HowToCome/HowToCome';
 import MiddleInfo from '@/pages/MiddleInfo/MiddleInfo';
 import TopInfo from '@/pages/TopInfo';
 import Gallery from '@/pages/Gallery';
-import GuideInfo from '@/pages/WeddingInfo';
+import GuideInfo from '@/pages/GuideInfo';
 
 export default function App() {
   return (
