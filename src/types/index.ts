@@ -22,3 +22,9 @@ export interface GalleryType {
   src: string;
   alt: string;
 }
+
+export interface GuideType {
+  value: string;
+  label: string;
+  content: string;
+}
