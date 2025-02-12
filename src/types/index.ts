@@ -28,3 +28,9 @@ export interface GuideType {
   label: string;
   content: string;
 }
+
+export interface AccountType {
+  name: string;
+  bank: string;
+  accountNumber: string;
+}
