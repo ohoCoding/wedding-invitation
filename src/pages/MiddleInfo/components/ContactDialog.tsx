@@ -4,6 +4,8 @@ import ContactItem from '@/pages/MiddleInfo/components/ContactItem';
 import { DialogTitle, DialogClose } from '@radix-ui/react-dialog';
 import { contactInfo } from '@/constants/contactInfo';
 import { X } from 'lucide-react'; // X 버튼 아이콘
+import { Separator } from '@/components/ui/separator';
+import { Fragment } from 'react/jsx-runtime';
 
 const ContactDialog = () => {
   return (
@@ -28,11 +30,21 @@ const ContactDialog = () => {
               </button>
             </DialogClose>
           </div>
+          <div className="pt-2">
+            <Separator orientation="horizontal" />
+          </div>
 
           {/* 연락처 목록 */}
-          <div className="mt-4 space-y-2">
+          <div className="mt-2 space-y-2">
             {contactInfo.map((contact, index) => (
-              <ContactItem key={index} {...contact} />
+              <Fragment key={index}>
+                <ContactItem key={index} {...contact} />
+                {!contact.isBride &&
+                  index < contactInfo.length - 1 &&
+                  contactInfo[index + 1].isBride && (
+                    <Separator orientation="horizontal" />
+                  )}
+              </Fragment>
             ))}
           </div>
         </div>
