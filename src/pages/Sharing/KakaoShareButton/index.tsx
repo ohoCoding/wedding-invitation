@@ -16,11 +16,11 @@ const KakaoShareButton = () => {
       return;
     }
 
-    if (!window.Kakao.Link) {
+    if (!window.Kakao.Share) {
       alert('카카오 링크 기능이 초기화되지 않았습니다.');
       return;
     }
-    window.Kakao.Link.sendDefault({
+    window.Kakao.Share.sendDefault({
       objectType: 'feed',
       content: {
         title: '이동윤 ♥ 서정현 결혼합니다',

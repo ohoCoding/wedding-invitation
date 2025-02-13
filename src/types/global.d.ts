@@ -5,8 +5,40 @@ declare global {
     Kakao: {
       init: (key: string) => void;
       isInitialized: () => boolean;
-      Link: {
+      Share: {
         sendDefault: (params: {
+          objectType: string;
+          content: {
+            title: string;
+            description: string;
+            imageUrl: string;
+            link: { mobileWebUrl: string; webUrl: string };
+          };
+          buttons: {
+            title: string;
+            link: { mobileWebUrl: string; webUrl: string };
+          }[];
+        }) => void;
+        createDefaultButton: (
+          options: {
+            container: string;
+            objectType: string;
+            content: {
+              title: string;
+              description: string;
+              imageUrl: string;
+              link: { mobileWebUrl: string; webUrl: string };
+            };
+            buttons: {
+              title: string;
+              link: { mobileWebUrl: string; webUrl: string };
+            }[];
+          },
+          options: { lang: string }
+        ) => void;
+
+        createSendDefaultButton: (options: {
+          container: string;
           objectType: string;
           content: {
             title: string;
