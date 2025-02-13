@@ -9,9 +9,11 @@ const KakaoShareButton = () => {
   // 카카오톡 공유하기
   const shareKakao = () => {
     if (!window.Kakao) {
-      alert(
-        '카카오 SDK가 아직 로드되지 않았습니다. 잠시 후 다시 시도해주세요.'
-      );
+      alert('카카오 SDK가 아직 로드되지 않았습니다.');
+      return;
+    }
+    if (!window.Kakao.Link) {
+      alert('카카오 링크 기능이 초기화되지 않았습니다.');
       return;
     }
     window.Kakao.Link.sendDefault({
