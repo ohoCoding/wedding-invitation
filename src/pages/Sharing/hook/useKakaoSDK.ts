@@ -19,7 +19,7 @@ const useKakaoSDK = () => {
         if (!window.Kakao.isInitialized()) {
           window.Kakao.init(kakaoKey);
         }
-        if (window.Kakao.Link) {
+        if (window.Kakao.Link !== undefined) {
           clearInterval(checkKakaoLoaded);
         }
       }
@@ -28,7 +28,6 @@ const useKakaoSDK = () => {
     // 일정 시간이 지나도 `window.Kakao.Link`가 없으면 타임아웃
     setTimeout(() => {
       clearInterval(checkKakaoLoaded);
-      console.error('❌ Kakao SDK 로딩이 예상보다 오래 걸립니다.');
     }, 10000); // 10초 후 강제 중단
 
     // 컴포넌트 언마운트 시 `clearInterval`
