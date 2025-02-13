@@ -11,11 +11,15 @@ const useKakaoSDK = () => {
 
     // `window.Kakao`가 로드될 때까지 기다린 후 초기화
     const checkKakaoLoaded = setInterval(() => {
-      if (window.Kakao && window.Kakao.Link) {
-        clearInterval(checkKakaoLoaded);
+      // Kakao SDK 로드 확인
+      if (window.Kakao) {
+        // Kakao SDK 초기화
         if (!window.Kakao.isInitialized()) {
           window.Kakao.init(kakaoKey);
-          console.log('Kakao SDK 초기화되었습니다!');
+        }
+        // Kakao SDK 로드 완료 시 clearInterval
+        if (window.Kakao.Link) {
+          clearInterval(checkKakaoLoaded);
         }
       }
     }, 500);
