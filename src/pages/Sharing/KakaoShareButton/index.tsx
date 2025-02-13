@@ -4,7 +4,7 @@ import useKakaoSDK from '@/pages/Sharing/hook/useKakaoSDK';
 
 const KakaoShareButton = () => {
   useKakaoSDK(); // 카카오 SDK 로드 커스텀 훅
-  const currentUrl = window.location.href; // 현재 페이지 URL
+  const BASE_URL = import.meta.env.VITE_APP_BASE_URL; // 환경 변수 사용
 
   // 카카오톡 공유하기
   const shareKakao = () => {
@@ -23,14 +23,14 @@ const KakaoShareButton = () => {
         description: '저희의 결혼식에 초대합니다.',
         imageUrl:
           'https://wedding-invitation-olive-two.vercel.app/images/wedding.png',
-        link: { mobileWebUrl: currentUrl, webUrl: currentUrl },
+        link: { mobileWebUrl: BASE_URL, webUrl: BASE_URL },
       },
       buttons: [
         {
           title: '청첩장 보기',
           link: {
-            mobileWebUrl: currentUrl,
-            webUrl: currentUrl,
+            mobileWebUrl: BASE_URL,
+            webUrl: BASE_URL,
           },
         },
       ],

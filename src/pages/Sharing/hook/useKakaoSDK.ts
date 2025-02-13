@@ -15,7 +15,7 @@ const useKakaoSDK = () => {
         clearInterval(checkKakaoLoaded);
         if (!window.Kakao.isInitialized()) {
           window.Kakao.init(kakaoKey);
-          console.log('✅ Kakao SDK Initialized!');
+          console.log('Kakao SDK 초기화되었습니다!');
         }
       }
     }, 500);
