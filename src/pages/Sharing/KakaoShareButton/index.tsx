@@ -1,11 +1,12 @@
 import { Button } from '@/components/ui/button';
 import KakaoIcon from '@/assets/icons/kakao.svg';
-import useKakaoSDK from '@/pages/Sharing/components/useKakaoSDK';
+import useKakaoSDK from '@/pages/Sharing/hook/useKakaoSDK';
 
 const KakaoShareButton = () => {
-  const currentUrl = window.location.href; // 현재 페이지 URL
   useKakaoSDK(); // 카카오 SDK 로드 커스텀 훅
-  // ✅ 카카오톡 공유하기
+  const currentUrl = window.location.href; // 현재 페이지 URL
+
+  // 카카오톡 공유하기
   const shareKakao = () => {
     if (!window.Kakao) {
       alert(
