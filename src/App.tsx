@@ -6,6 +6,7 @@ import TopInfo from '@/pages/TopInfo';
 import Gallery from '@/pages/Gallery';
 import GuideInfo from '@/pages/GuideInfo';
 import BlessingMoney from '@/pages/BlessingMoney/BlessingMoney';
+import Sharing from '@/pages/Sharing/index';
 import { Toaster } from '@/components/ui/toaster';
 
 export default function App() {
@@ -20,6 +21,7 @@ export default function App() {
         <HowToCome />
         <GuideInfo />
         <BlessingMoney />
+        <Sharing />
         <Toaster />
       </Card>
     </div>
