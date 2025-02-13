@@ -31,6 +31,7 @@ declare global {
           position: { lat: number; lng: number };
           map: naver.maps.Map;
         }) => naver.maps.Marker;
+        LatLng: new (lat: number, lng: number) => naver.maps.LatLng; // 추가
       };
     };
   }

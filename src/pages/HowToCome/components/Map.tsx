@@ -7,15 +7,19 @@ import tMapImage from '@/assets/images/t_map.svg';
 const Map = () => {
   useEffect(() => {
     const initMap = () => {
-      const map = new window.naver.maps.Map('map', {
+      // document.getElementById("map") 를 가져와서 HTMLElement로 변환
+      const mapContainer = document.getElementById('map') as HTMLElement | null;
+      if (!mapContainer) {
+        console.error('지도 컨테이너를 찾을 수 없습니다.');
+        return;
+      }
+
+      const map = new window.naver.maps.Map(mapContainer, {
         center: new window.naver.maps.LatLng(37.5594054, 126.9817843),
         zoom: 16,
       });
 
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-expect-error
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const marker = new window.naver.maps.Marker({
+      new window.naver.maps.Marker({
         position: new window.naver.maps.LatLng(37.5594054, 126.9817843),
         map: map,
       });
