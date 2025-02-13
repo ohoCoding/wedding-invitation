@@ -4,7 +4,6 @@ import useKakaoSDK from '@/pages/Sharing/hook/useKakaoSDK';
 
 const KakaoShareButton = () => {
   useKakaoSDK(); // 카카오 SDK 로드 커스텀 훅
-  const BASE_URL = import.meta.env.VITE_APP_BASE_URL; // 환경 변수 사용
 
   // 카카오톡 공유하기
   const shareKakao = () => {
@@ -12,6 +11,11 @@ const KakaoShareButton = () => {
       alert('카카오 SDK가 아직 로드되지 않았습니다.');
       return;
     }
+    if (!window.Kakao.isInitialized()) {
+      alert('카카오 SDK가 초기화되지 않았습니다.');
+      return;
+    }
+
     if (!window.Kakao.Link) {
       alert('카카오 링크 기능이 초기화되지 않았습니다.');
       return;
@@ -23,14 +27,17 @@ const KakaoShareButton = () => {
         description: '저희의 결혼식에 초대합니다.',
         imageUrl:
           'https://wedding-invitation-olive-two.vercel.app/images/wedding.png',
-        link: { mobileWebUrl: BASE_URL, webUrl: BASE_URL },
+        link: {
+          mobileWebUrl: 'https://wedding-invitation-olive-two.vercel.app',
+          webUrl: 'https://wedding-invitation-olive-two.vercel.app',
+        },
       },
       buttons: [
         {
           title: '청첩장 보기',
           link: {
-            mobileWebUrl: BASE_URL,
-            webUrl: BASE_URL,
+            mobileWebUrl: 'https://wedding-invitation-olive-two.vercel.app',
+            webUrl: 'https://wedding-invitation-olive-two.vercel.app',
           },
         },
       ],
