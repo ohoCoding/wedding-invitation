@@ -21,5 +21,17 @@ declare global {
         }) => void;
       };
     };
+    naver: {
+      maps: {
+        Map: new (
+          mapContainer: HTMLElement,
+          options: { center: { lat: number; lng: number }; zoom: number }
+        ) => naver.maps.Map;
+        Marker: new (options: {
+          position: { lat: number; lng: number };
+          map: naver.maps.Map;
+        }) => naver.maps.Marker;
+      };
+    };
   }
 }
