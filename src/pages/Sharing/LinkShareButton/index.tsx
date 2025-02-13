@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import Link from '@/assets/icons/link.svg';
+import { Clipboard } from 'lucide-react';
 const LinkShareButton = () => {
   const currentUrl = window.location.href; // 현재 페이지 URL
   const copyToClipboard = async () => {
@@ -14,7 +14,7 @@ const LinkShareButton = () => {
 
   return (
     <Button onClick={copyToClipboard} variant="ghost" className="gap-2 text-lg">
-      <img src={Link} alt="링크 아이콘" width={24} />
+      <Clipboard size={20} />
       <span>링크주소 복사하기</span>
     </Button>
   );
