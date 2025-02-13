@@ -11,7 +11,7 @@ const GuideInfoTab = () => {
           <TabsTrigger
             key={tab.value}
             value={tab.value}
-            className="border  rounded-t-lg px-3 py-3 bg-gray-100  text-gray-500 data-[state=active]:bg-white data-[state=active]:text-gray-900 data-[state=active]:border-gray-200 data-[state=active]:border-b-0 "
+            className="border  rounded-t-lg px-3 py-3 bg-gray-100  text-gray-500 data-[state=active]:bg-white data-[state=active]:text-gray-900 data-[state=active]:border-gray-200 data-[state=active]:border-b-0 text-base font-semibold"
           >
             {tab.label}
           </TabsTrigger>
@@ -22,7 +22,7 @@ const GuideInfoTab = () => {
       {guideInfo.map((tab) => (
         <TabsContent key={tab.value} value={tab.value} className="mt-0">
           <Card className="border border-gray-200 rounded-bl-lg rounded-br-lg shadow-sm">
-            <CardContent className="p-5 text-center text-black ">
+            <CardContent className="px-4 py-10 text-center text-black leading-7">
               {tab.content.split('\n').map((line, index) => (
                 <div key={index}>
                   {line}
