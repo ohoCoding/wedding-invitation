@@ -1,10 +1,10 @@
 import maintopImage from '@/assets/images/maintopImage.png';
 const MainImage = () => {
   return (
-    <div className="relative mt-6 mx-auto w-[82%] min-h-[80px] leading-none z-0 rounded-tl-[500px] rounded-tr-[500px] rounded-bl-[6px] rounded-br-[6px] overflow-hidden">
+    <div className="relative mt-6 mx-auto w-[82%] min-h-[80px] leading-none z-0 rounded-tl-[500px] rounded-tr-[500px] overflow-hidden">
       {/* 배경 비디오 (이미지 위에 위치) */}
       <video
-        className="absolute top-0 left-0 z-10 object-cover w-full h-full opacity-5 brightness-140 contrast-110 rounded-2xl"
+        className="absolute top-0 left-0 z-10 object-cover w-full h-full opacity-5 brightness-140 contrast-110"
         autoPlay
         loop
         muted
@@ -20,7 +20,7 @@ const MainImage = () => {
       <img
         src={maintopImage}
         alt="Wedding"
-        className="relative z-0 w-full shadow-lg rounded-2xl"
+        className="relative z-0 w-full shadow-lg"
       />
     </div>
   );
