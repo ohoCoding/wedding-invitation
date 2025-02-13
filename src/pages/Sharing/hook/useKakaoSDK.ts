@@ -9,18 +9,18 @@ const useKakaoSDK = () => {
       return;
     }
 
-    // 이미 `index.html`에 Kakao SDK가 선언되어 있으므로, 다시 로드하지 않고 초기화만 진행
-    if (typeof window !== 'undefined') {
-      const checkKakaoLoaded = setInterval(() => {
-        if (window.Kakao) {
-          clearInterval(checkKakaoLoaded);
-          if (!window.Kakao.isInitialized()) {
-            window.Kakao.init(kakaoKey);
-            console.log('Kakao SDK 초기화 완료');
-          }
+    // `window.Kakao`가 로드될 때까지 기다린 후 초기화
+    const checkKakaoLoaded = setInterval(() => {
+      if (window.Kakao && window.Kakao.Link) {
+        clearInterval(checkKakaoLoaded);
+        if (!window.Kakao.isInitialized()) {
+          window.Kakao.init(kakaoKey);
+          console.log('✅ Kakao SDK Initialized!');
         }
-      }, 100);
-    }
+      }
+    }, 500);
+    // 컴포넌트 언마운트 시 제거
+    return () => clearInterval(checkKakaoLoaded);
   }, []);
 };
 
