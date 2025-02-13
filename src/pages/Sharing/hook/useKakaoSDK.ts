@@ -2,7 +2,8 @@ import { useEffect } from 'react';
 
 const useKakaoSDK = () => {
   useEffect(() => {
-    const kakaoKey = import.meta.env.VITE_KAKAO_JS_KEY; // 환경 변수에서 API 키 가져오기
+    // 환경 변수에서 API 키 가져오기
+    const kakaoKey = import.meta.env.VITE_KAKAO_JS_KEY;
 
     if (!kakaoKey) {
       console.error('Kakao JavaScript Key가 설정되지 않았습니다.');
@@ -19,7 +20,7 @@ const useKakaoSDK = () => {
         if (!window.Kakao.isInitialized()) {
           window.Kakao.init(kakaoKey);
         }
-        if (window.Kakao.Link !== undefined) {
+        if (window.Kakao.Share !== undefined) {
           clearInterval(checkKakaoLoaded);
         }
       }
