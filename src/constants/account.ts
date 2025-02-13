@@ -6,6 +6,11 @@ export const groomAccount: AccountType[] = [
     bank: '우리은행',
     accountNumber: '01086350842',
   },
+  {
+    name: '이동윤',
+    bank: '우리은행',
+    accountNumber: '1002-253-796523',
+  },
 ];
 
 export const brideAccount: AccountType[] = [
@@ -18,5 +23,10 @@ export const brideAccount: AccountType[] = [
     name: '서동명',
     bank: '농협',
     accountNumber: '352-0900-0967-63',
+  },
+  {
+    name: '서정현',
+    bank: '하나은행 ',
+    accountNumber: '906-910127-06107',
   },
 ];
