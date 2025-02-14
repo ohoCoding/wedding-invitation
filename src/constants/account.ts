@@ -21,12 +21,12 @@ export const groomAccount: AccountType[] = [
 export const brideAccount: AccountType[] = [
   {
     name: '서동명',
-    bank: '농협',
+    bank: '농협은행',
     accountNumber: '352-0900-0967-63',
   },
   {
     name: '권숙이',
-    bank: '농협',
+    bank: '농협은행',
     accountNumber: '352-1019-9362-03',
   },
   {
