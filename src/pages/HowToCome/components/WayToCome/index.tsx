@@ -1,10 +1,10 @@
+import { PhoneCall } from 'lucide-react';
 const handleCall = () => {
   window.location.href = 'tel:02-2002-3000';
 };
-
 const WayToCome = () => {
   return (
-    <div className="text-left leading-8 px-8">
+    <div className="px-8 leading-8 text-left">
       <div className="py-2">
         <div className="text-[17px]">지하철</div>
         <div className="text-[15px] leading-8">
@@ -29,10 +29,11 @@ const WayToCome = () => {
         <div className="text-[17px]">자가용</div>
         <div className="text-[15px] leading-8">
           <p>⦁ 서울 중구 소공로 51(회현동 1번지) 우리은행 본점</p>
-          <p className="text-sm " onClick={handleCall}>
-            <span className="active:scale-98 transform transition-transform">
-              📞 02) 2002-3000
-            </span>
+          <p className="text-sm">
+            <div className="flex flex-row transition-transform transform active:scale-98">
+              02) 2002-3000 (<PhoneCall size={18} color="#00A8FF" />
+              <span onClick={handleCall}>전화 하기</span>)
+            </div>
           </p>
         </div>
       </div>

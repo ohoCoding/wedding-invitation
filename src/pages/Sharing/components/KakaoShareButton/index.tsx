@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import KakaoIcon from '@/assets/icons/kakao.svg';
-import useKakaoSDK from '@/pages/Sharing/hook/useKakaoSDK';
+import useKakaoSDK from '@/hooks/useKakaoSDK';
 
 const KakaoShareButton = () => {
   useKakaoSDK(); // 카카오 SDK 로드 커스텀 훅
@@ -46,8 +46,13 @@ const KakaoShareButton = () => {
 
   return (
     <Button onClick={shareKakao} variant="ghost" className="gap-2 text-lg">
-      <img src={KakaoIcon} alt="카카오톡 아이콘" width={18} className='grayscale'/>
-      <p className='text-sm'>카카오톡 공유하기</p>
+      <img
+        src={KakaoIcon}
+        alt="카카오톡 아이콘"
+        width={18}
+        className="grayscale"
+      />
+      <p className="text-sm">카카오톡 공유하기</p>
     </Button>
   );
 };

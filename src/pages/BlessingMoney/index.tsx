@@ -1,7 +1,7 @@
 import { CardContent } from '@/components/ui/card';
-import AccountDropDown from '@/pages/BlessingMoney/components/AccountDropDown';
+import AccountDropDown from '@/pages/BlessingMoney/components/BlessingContent/AccountDropDown';
 import BlessingContent from '@/pages/BlessingMoney/components/BlessingContent';
-import BlessingTitle from '@/pages/BlessingMoney/components/BlessingTitle';
+import BlessingTitle from '@/pages/BlessingMoney/components/BlessingTittle';
 
 const BlessingMoney = () => {
   return (
