@@ -1,9 +1,9 @@
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
-import ContactItem from '@/pages/MiddleInfo/components/ContactItem';
+import ContactItem from '@/pages/MiddleInfo/components/Greetings/Contacting/ContactItem';
 import { DialogTitle, DialogClose } from '@radix-ui/react-dialog';
 import { contactInfo } from '@/constants/contactInfo';
-import { X } from 'lucide-react'; // X 버튼 아이콘
+import { X } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 import { Fragment } from 'react/jsx-runtime';
 

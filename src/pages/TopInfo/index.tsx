@@ -1,9 +1,9 @@
-import { CardContent } from "@/components/ui/card";
-import WeddingTitle from "@/pages/TopInfo/components/WeddingTitle";
-import CoupleName from "@/pages/TopInfo/components/CoupleName";
-import MainImage from "@/pages/TopInfo/components/MainImage";
-import WeddingInfo from "@/pages/TopInfo/components/WeddingInfo";
-import Lovemessage from "@/pages/TopInfo/components/LoveMessage";
+import { CardContent } from '@/components/ui/card';
+import WeddingTitle from '@/pages/TopInfo/components/WeddingTitle';
+import CoupleName from '@/pages/TopInfo/components/CoupleName';
+import MainImage from '@/pages/TopInfo/components/MainImage';
+import WeddingInfo from '@/pages/TopInfo/components/WeddingInfo';
+import Lovemessage from '@/pages/TopInfo/components/LoveMessage';
 
 const TopInfo = () => {
   return (

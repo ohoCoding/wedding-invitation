@@ -1,5 +1,5 @@
-import Contacting from '@/pages/MiddleInfo/components/Contacting';
-import GreetingMessage from '@/pages/MiddleInfo/components/GreetingMessage';
+import Contacting from '@/pages/MiddleInfo/components/Greetings/Contacting';
+import GreetingMessage from '@/pages/MiddleInfo/components/Greetings/GrettingMessage';
 
 const Greetings = () => {
   return (

@@ -1,4 +1,4 @@
-import ContactDialog from '@/pages/MiddleInfo/components/ContactDialog';
+import ContactDialog from '@/pages/MiddleInfo/components/Greetings/Contacting/ContactDialog';
 
 const Contacting = () => {
   return (

@@ -1,4 +1,4 @@
-import MapButton from '@/pages/HowToCome/components/MapButton';
+import MapButton from '@/pages/HowToCome/components/Map/MapButton';
 import { useEffect } from 'react';
 import naverMapImage from '@/assets/images/naver_map.webp';
 import kakaoMapImage from '@/assets/images/kakaomap_basic.png';
