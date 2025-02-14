@@ -20,7 +20,7 @@ const Pagination = ({
             onPageChange(index + 1 + (currentCycle - 1) * slidesPerCycle)
           }
           className={`w-3 h-3 rounded-full transition-all ${
-            index === dotIndex ? "bg-gray-500 scale-110" : "bg-gray-200"
+            index === dotIndex ? "bg-gray-500" : "bg-gray-200"
           }`}
         />
       ))}
