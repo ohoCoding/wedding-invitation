@@ -5,6 +5,9 @@ const useAnimated = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    const element = containerRef.current;
+    if (!element) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -19,18 +22,14 @@ const useAnimated = () => {
       }
     );
 
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
-    }
+    observer.observe(element);
 
     return () => {
-      if (containerRef.current) {
-        observer.unobserve(containerRef.current);
-      }
+      observer.unobserve(element); // cleanup 함수에서 저장한 element 사용
     };
   }, []);
 
   return { containerRef, isVisible };
 };
 
-export default useAnimated
+export default useAnimated;
