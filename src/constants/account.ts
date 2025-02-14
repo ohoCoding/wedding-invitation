@@ -7,6 +7,11 @@ export const groomAccount: AccountType[] = [
     accountNumber: '01086350842',
   },
   {
+    name: '강경희',
+    bank: '우리은행',
+    accountNumber: '01090240842',
+  },
+  {
     name: '이동윤',
     bank: '우리은행',
     accountNumber: '1002-253-796523',
