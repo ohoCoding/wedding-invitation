@@ -15,20 +15,28 @@ const Carousel = () => {
     })
   );
 
-  // 무한루프를 위해 마지막 이미지를 맨 앞에, 첫 번째 이미지를 맨 뒤에 추가
+  // 무한 루프 구현을 위해 첫 번째와 마지막 이미지를 추가
   const extendedImages: GalleryType[] = parsedImages.length
     ? [parsedImages[parsedImages.length - 1], ...parsedImages, parsedImages[0]]
     : [];
 
+  // 현재 슬라이드 상태
   const [currentIndex, setCurrentIndex] = useState(1);
+  // 드래그 시작 위치 (X, Y 좌표)
   const [dragStartX, setDragStartX] = useState<number | null>(null);
+  const [dragStartY, setDragStartY] = useState<number | null>(null);
+  // 드래그 중인지 여부
   const [dragging, setDragging] = useState(false);
+  // 세로 스크롤 여부 확인
+  const [isVerticalScroll, setIsVerticalScroll] = useState(false);
+  // 현재 슬라이드 이동 거리
   const [translateX, setTranslateX] = useState(0);
+  // 슬라이드 컨테이너 참조
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // 자동 슬라이드: 드래그 중이 아닐 떄마다 3초후 다음 슬라이드 이동
+  // 자동 슬라이드 (드래그 중이 아닐 때 3초마다 다음 슬라이드 이동)
   useEffect(() => {
-    if (!parsedImages.length) return; // 이미지가 없으면 타이머 설정 X
+    if (!parsedImages.length) return;
     if (dragging) return;
     const interval = setInterval(() => {
       setCurrentIndex((prev) => prev + 1);
@@ -36,7 +44,7 @@ const Carousel = () => {
     return () => clearInterval(interval);
   }, [currentIndex, dragging, parsedImages.length]);
 
-  // transition 종료 후 클론이미지에서 실제 이미지로 인덱스 보정
+  // transition 종료 후 클론 이미지에서 실제 이미지로 인덱스 보정
   const handleTransitionEnd = () => {
     if (currentIndex === 0) {
       setCurrentIndex(parsedImages.length);
@@ -45,8 +53,7 @@ const Carousel = () => {
         containerRef.current.style.transform = `translateX(-${
           parsedImages.length * 100
         }%)`;
-        // getBoundingClientRect() 호출로 reflow 강제 (함수 호출이므로 ESLint 경고가 발생하지 않음)
-        containerRef.current.getBoundingClientRect();
+        containerRef.current.getBoundingClientRect(); // reflow 강제
         containerRef.current.style.transition = "transform 300ms ease-out";
       }
     } else if (currentIndex === parsedImages.length + 1) {
@@ -54,40 +61,58 @@ const Carousel = () => {
       if (containerRef.current) {
         containerRef.current.style.transition = "none";
         containerRef.current.style.transform = `translateX(-100%)`;
-        // getBoundingClientRect() 호출로 reflow 강제 (함수 호출이므로 ESLint 경고가 발생하지 않음)
-        containerRef.current.getBoundingClientRect();
+        containerRef.current.getBoundingClientRect(); // reflow 강제
         containerRef.current.style.transition = "transform 300ms ease-out";
       }
     }
   };
 
-  // 드래그 시작: 시작 X 좌표 저장
-  const handleDragStart = (clientX: number) => {
+  // 드래그 시작: 터치 시작 위치 저장
+  const handleDragStart = (clientX: number, clientY: number) => {
     setDragStartX(clientX);
+    setDragStartY(clientY);
     setDragging(true);
+    setIsVerticalScroll(false);
   };
 
-  // 드래그 중: 이동 거리 업데이트
-  const handleDragMove = (clientX: number) => {
-    if (!dragging || dragStartX === null) return;
+  // 드래그 이동: X, Y 이동 거리 계산
+  const handleDragMove = (clientX: number, clientY: number, e?: Event) => {
+    if (!dragging || dragStartX === null || dragStartY === null) return;
+
     const deltaX = clientX - dragStartX;
+    const deltaY = clientY - dragStartY;
+
+    // 수직 이동이 수평 이동보다 크면 세로 스크롤 허용
+    if (!isVerticalScroll) {
+      if (Math.abs(deltaY) > Math.abs(deltaX)) {
+        setIsVerticalScroll(true); // 세로 스크롤 모드 활성화
+        return;
+      } else {
+        setIsVerticalScroll(false); // 가로 슬라이드 모드 유지
+        if (e) e.preventDefault(); // 가로 슬라이드시 세로 스크롤 차단
+      }
+    }
+
     setTranslateX(deltaX);
   };
 
-  // 드래그 종료: 임계치(50px)를 넘으면 슬라이드 전환 (무한 순환)
+  // 드래그 종료: 슬라이드 전환 또는 원래 위치로 복귀
   const handleDragEnd = () => {
     if (!dragging) return;
 
-    if (translateX < -50) {
-      // 오른쪽으로 드래그 -> 다음 슬라이드 (마지막이면 0으로)
-      setCurrentIndex((prev) => prev + 1);
-    } else if (translateX > 50) {
-      // 왼쪽으로 드래그 -> 이전 슬라이드 (0이면 마지막 슬라이드로)
-      setCurrentIndex((prev) => prev - 1);
+    if (!isVerticalScroll) {
+      if (translateX < -50) {
+        setCurrentIndex((prev) => prev + 1);
+      } else if (translateX > 50) {
+        setCurrentIndex((prev) => prev - 1);
+      }
     }
+
+    // 상태 초기화
     setTranslateX(0);
     setDragging(false);
     setDragStartX(null);
+    setDragStartY(null);
   };
 
   return (
@@ -101,14 +126,15 @@ const Carousel = () => {
           }% + ${translateX}px))`,
         }}
         onTransitionEnd={handleTransitionEnd}
+        // 마우스 이벤트
         onMouseDown={(e) => {
           e.preventDefault();
-          handleDragStart(e.clientX);
+          handleDragStart(e.clientX, e.clientY);
         }}
         onMouseMove={(e) => {
           if (dragging) {
             e.preventDefault();
-            handleDragMove(e.clientX);
+            handleDragMove(e.clientX, e.clientY);
           }
         }}
         onMouseUp={(e) => {
@@ -121,8 +147,13 @@ const Carousel = () => {
             handleDragEnd();
           }
         }}
-        onTouchStart={(e) => handleDragStart(e.touches[0].clientX)}
-        onTouchMove={(e) => handleDragMove(e.touches[0].clientX)}
+        // 터치 이벤트
+        onTouchStart={(e) =>
+          handleDragStart(e.touches[0].clientX, e.touches[0].clientY)
+        }
+        onTouchMove={(e) =>
+          handleDragMove(e.touches[0].clientX, e.touches[0].clientY)
+        }
         onTouchEnd={handleDragEnd}
       >
         {extendedImages.map((item, index) => (
