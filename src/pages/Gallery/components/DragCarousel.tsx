@@ -1,12 +1,13 @@
-import { useState, useRef, useEffect } from 'react';
-import { GalleryType } from '@/types';
+import { useState, useRef, useEffect } from "react";
+import { GalleryType } from "@/types";
+import Pagination from "./Pagination";
 
 const Carousel = () => {
   // 환경변수에서 이미지 URL 가져오기
   const imageURLFromENV = import.meta.env.VITE_APP_CLOUDFRONT_URL;
 
   // 이미지 URL을 환경변수에서 가져와서 이미지 리스트 생성
-  const parsedImages: GalleryType[] = Array.from({ length: 19 }).map(
+  const parsedImages: GalleryType[] = Array.from({ length: 20 }).map(
     (_, index) => ({
       id: index + 1,
       src: `${imageURLFromENV}/images/react_wedding_invitation_${index}.jpg`,
@@ -40,22 +41,22 @@ const Carousel = () => {
     if (currentIndex === 0) {
       setCurrentIndex(parsedImages.length);
       if (containerRef.current) {
-        containerRef.current.style.transition = 'none';
+        containerRef.current.style.transition = "none";
         containerRef.current.style.transform = `translateX(-${
           parsedImages.length * 100
         }%)`;
         // getBoundingClientRect() 호출로 reflow 강제 (함수 호출이므로 ESLint 경고가 발생하지 않음)
         containerRef.current.getBoundingClientRect();
-        containerRef.current.style.transition = 'transform 300ms ease-out';
+        containerRef.current.style.transition = "transform 300ms ease-out";
       }
     } else if (currentIndex === parsedImages.length + 1) {
       setCurrentIndex(1);
       if (containerRef.current) {
-        containerRef.current.style.transition = 'none';
+        containerRef.current.style.transition = "none";
         containerRef.current.style.transform = `translateX(-100%)`;
         // getBoundingClientRect() 호출로 reflow 강제 (함수 호출이므로 ESLint 경고가 발생하지 않음)
         containerRef.current.getBoundingClientRect();
-        containerRef.current.style.transition = 'transform 300ms ease-out';
+        containerRef.current.style.transition = "transform 300ms ease-out";
       }
     }
   };
@@ -90,7 +91,7 @@ const Carousel = () => {
   };
 
   return (
-    <div className="relative w-full overflow-hidden border bg-background">
+    <div className="relative w-full overflow-hidden bg-background">
       <div
         ref={containerRef}
         className="flex transition-transform duration-300 ease-out"
@@ -127,7 +128,7 @@ const Carousel = () => {
         {extendedImages.map((item, index) => (
           <div className="flex-shrink-0 w-full" key={index}>
             <img
-              loading={index === currentIndex ? 'eager' : 'lazy'}
+              loading={index === currentIndex ? "eager" : "lazy"}
               className="object-cover w-full h-auto"
               src={item.src}
               alt={item.alt}
@@ -135,6 +136,7 @@ const Carousel = () => {
           </div>
         ))}
       </div>
+      <Pagination currentIndex={currentIndex} onPageChange={setCurrentIndex} />
     </div>
   );
 };
