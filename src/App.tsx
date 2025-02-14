@@ -1,6 +1,6 @@
 import { Card } from '@/components/ui/card';
 import Calendar from '@/pages/Calendar';
-import HowToCome from '@/pages/HowToCome/HowToCome';
+import HowToCome from '@/pages/HowToCome';
 import MiddleInfo from '@/pages/MiddleInfo';
 import TopInfo from '@/pages/TopInfo';
 import Gallery from '@/pages/Gallery';
